@@ -231,23 +231,17 @@ body {
 #content main .open-sidebar-btn {
 	display: inline-block;
 	padding: 16px 24px;
-	/* Adjusted padding for better proportions */
 	border: 2px solid #4CAF50;
-	/* Green border */
 	border-radius: 8px;
 	background-color: #4CAF50;
-	/* Green background */
 	color: white;
-	/* White text */
 	text-decoration: none;
 	transition: background-color 0.3s, color 0.3s;
 }
 
 #content main .open-sidebar-btn:hover {
 	background-color: #45a049;
-	/* Darker green on hover */
 	color: white;
-	/* White text on hover */
 }
 
 
@@ -454,6 +448,8 @@ body {
     z-index: 999;
     transition: width 0.3s;
 	overflow: auto;
+	transition: transform 0.3s ease-out;
+
 }
 
 #right-sidebar-content {
