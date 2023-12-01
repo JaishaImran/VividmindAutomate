@@ -174,6 +174,7 @@
             display: inline-block;
             margin-bottom: 15px;
         }
+
         .right-sidebar-heading {
             display: block;
             color: #45a049;
@@ -183,6 +184,7 @@
             text-align: center;
             font-size: 18px;
         }
+
         .right-sidebar-heading i {
             margin-right: 15px;
         }
@@ -251,7 +253,7 @@
                     <i class='bx bx-log-out-circle'></i>
                 </div>
                 <!-- Form fields -->
-                <label class="right-sidebar-heading"> 
+                <label class="right-sidebar-heading">
                     <i class='bx bxs-hourglass-bottom'></i> Advanced Automation
                 </label>
                 <br>
@@ -267,39 +269,20 @@
                 </div>
                 <!-- Step 1: Services -->
                 <div id="step-services" class="step-content">
-                    <div class="service-checkbox">
-                        <input type="checkbox" id="service-instagram" name="service-instagram" class="service-label">
-                        <label for="service-instagram" class="service-label">Instagram</label>
-                    </div>
-                    <div class="service-checkbox">
-                        <input type="checkbox" id="service-twitter" name="service-twitter" class="service-label">
-                        <label for="service-twitter" class="service-label">Twitter</label>
-                    </div>
-                    <div class="service-checkbox">
-                        <input type="checkbox" id="service-tiktok" name="service-tiktok" class="service-label">
-                        <label for="service-tiktok" class="service-label">TikTok</label>
-                    </div>
-                    <div class="service-checkbox">
-                        <input type="checkbox" id="service-linkedin" name="service-linkedin" class="service-label">
-                        <label for="service-linkedin" class="service-label">LinkedIn</label>
-                    </div>
-                    <div class="service-checkbox">
-                        <input type="checkbox" id="service-facebook" name="service-facebook" class="service-label">
-                        <label for="service-facebook" class="service-label">Facebook</label>
-                    </div>
-                    <div class="service-checkbox">
-                        <input type="checkbox" id="service-pinterest" name="service-pinterest" class="service-label">
-                        <label for="service-pinterest" class="service-label">Pinterest</label>
-                    </div>
-                    <div class="service-checkbox">
-                        <input type="checkbox" id="service-youtube" name="service-youtube" class="service-label">
-                        <label for="service-youtube" class="service-label">Youtube</label>
-                    </div>
-                    <div class="service-checkbox">
-                        <input type="checkbox" id="service-threads" name="service-threads" class="service-label">
-                        <label for="service-threads" class="service-label">Threads</label>
-                    </div>
-                    <!--<button onclick="nextStep('step-interact')">Next</button>-->
+                    <!-- Dropdown for Services -->
+                    <select id="services-dropdown" class="rounded-fields">
+                        <option value="service-instagram">Instagram</option>
+                        <option value="service-twitter">Twitter</option>
+                        <option value="service-tiktok">TikTok</option>
+                        <option value="service-linkedin">LinkedIn</option>
+                        <option value="service-facebook">Facebook</option>
+                        <option value="service-pinterest">Pinterest</option>
+                        <option value="service-youtube">Youtube</option>
+                        <option value="service-threads">Threads</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                    <!-- Button to trigger an action based on the selected service 
+                    <button onclick="nextStep('step-interact')">Next</button>-->
                 </div>
 
                 <div id="step-interact" class="step-content" style="display: none;">
@@ -447,7 +430,7 @@
                                 <div id="messaging-group" class="field-group" class="rounded-fields">
                                     <input type="text" id="message-search" placeholder="Search messages"
                                         class="rounded-fields">
-                                        <br>
+                                    <br>
                                     <input type="checkbox" id="select-all-messages" name="select-all-messages"
                                         class="service-label">
                                     <label for="select-all-messages" class="service-label">Select All Messages</label>
@@ -523,7 +506,8 @@
             <div class="head-title">
                 <!-- Create links dynamically -->
                 <div class="link-container-wrapper">
-                    <button id="addLinkButton" title="Create Automation" onclick="addLink()"><i class='bx bx-message-alt-add'></i>
+                    <button id="addLinkButton" title="Create Automation" onclick="addLink()"><i
+                            class='bx bx-message-alt-add'></i>
                     </button>
                     <br>
                     <div id="linkContainer"></div>
@@ -536,12 +520,17 @@
     <script src="script.js"></script>
 
     <script>
-        function toggleFieldGroup(fieldGroupId) {
-            var fieldGroup = document.getElementById(fieldGroupId);
-            if (fieldGroup.style.display === 'none' || fieldGroup.style.display === '') {
-                fieldGroup.style.display = 'block';
-            } else {
-                fieldGroup.style.display = 'none';
+        function toggleFieldGroup(groupName) {
+            // Hide all field groups
+            const fieldGroups = document.querySelectorAll('.field-group');
+            fieldGroups.forEach(group => {
+                group.style.display = 'none';
+            });
+
+            // Show the selected field group
+            const selectedGroup = document.getElementById(groupName);
+            if (selectedGroup) {
+                selectedGroup.style.display = 'block';
             }
         }
         function toggleInteractFields() {
@@ -593,19 +582,15 @@
             currentStep = nextStepId;
         }
 
-        // Initialize current step
-        var currentStep = "services";
+        let currentStep = null;
 
         function showStep(stepId) {
-            // Get the selected step
-            var selectedStep = document.getElementById(stepId);
-
-            // Toggle the visibility of the selected step
-            if (selectedStep.style.display === 'block') {
-                selectedStep.style.display = 'none'; // If currently visible, hide it
-            } else {
-                selectedStep.style.display = 'block'; // If currently hidden, show it
+            if (currentStep) {
+                document.getElementById(currentStep).style.display = 'none';
             }
+
+            currentStep = stepId;
+            document.getElementById(stepId).style.display = 'block';
         }
 
         // Function to create and append links
