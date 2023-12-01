@@ -258,14 +258,9 @@
                 </label>
                 <br>
                 <br>
-                <!-- Step Tabs -->
-                <div class="step-tabs">
-                    <div class="step-tab" onclick="showStep('step-services')">
-                        <i class='bx bxs-chevron-down'></i> Services
-                    </div>
-                    <div class="step-tab" onclick="showStep('step-interact')">
-                        <i class='bx bxs-chevron-down'></i> Interact
-                    </div>
+                <!-- Step Tabs -->                    
+                <div class="step-tab" onclick="showStep('step-services')">
+                    <i class='bx bxs-chevron-down'></i> Services
                 </div>
                 <!-- Step 1: Services -->
                 <div id="step-services" class="step-content">
@@ -284,7 +279,9 @@
                     <!-- Button to trigger an action based on the selected service 
                     <button onclick="nextStep('step-interact')">Next</button>-->
                 </div>
-
+                <div class="step-tab" onclick="showStep('step-interact')">
+                    <i class='bx bxs-chevron-down'></i> Interact
+                </div>
                 <div id="step-interact" class="step-content" style="display: none;">
                     <!--<label class="rounded-fields" for="interact">Interact</label>-->
                     <select id="interact" name="interact" onchange="toggleInteractFields()" class="rounded-fields">
@@ -459,7 +456,7 @@
                                     <br>
 
                                     <!-- Unfollow after -->
-                                    <label for="unfollow" class="service-label">Unfollow after</label>
+                                    <label for="unfollow" class="service-label">Unfollow after</label><br>
                                     <select id="unfollow" name="unfollow" class="rounded-fields"></select>
                                     <br>
                                     <!-- Button to go to Finish -->
