@@ -108,9 +108,7 @@
             position: relative;
             padding: 5px;
             margin-bottom: 15px;
-            /* Vertical space between links */
             margin-right: 15px;
-            /* Horizontal space between links */
         }
 
         .rounded-fields {
@@ -157,6 +155,21 @@
             outline: none;
             border-color: #4CAF50;
             box-shadow: 0 0 5px #4CAF50(52, 152, 219, 1);
+        }
+
+        .target-checkbox {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        .service-checkbox {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        .service-label {
+            display: inline-block;
+            margin-bottom: 15px;
         }
     </style>
 
@@ -218,232 +231,253 @@
         <br><br>
         <!-- Right Sidebar Content -->
         <div id="right-sidebar-content">
-            <div class="cancel-icon" onclick="closeRightSidebar()">
-                <i class='bx bx-log-out-circle'></i>
-            </div>
-            <!-- Form fields -->
-            <label class="rounded-fields"> <i class='bx bxs-hourglass-bottom'></i> Advanced Automation</label>
-            <br>
-            <br>
-            <!-- Step Tabs -->
-            <div class="step-tabs">
-                <div class="step-tab" onclick="showStep('step-services')"><i class='bx bxs-chevron-down'></i> Services
+            <ul class="side-menu top">
+                <div class="cancel-icon" onclick="closeRightSidebar()">
+                    <i class='bx bx-log-out-circle'></i>
                 </div>
-                <div class="step-tab" onclick="showStep('step-interact')"><i class='bx bxs-chevron-down'></i> Interact
+                <!-- Form fields -->
+                <label class="rounded-fields"> <i class='bx bxs-hourglass-bottom'></i> Advanced Automation</label>
+                <br>
+                <br>
+                <!-- Step Tabs -->
+                <div class="step-tabs">
+                    <div class="step-tab" onclick="showStep('step-services')">
+                        <i class='bx bxs-chevron-down'></i> Services
+                    </div>
+                    <div class="step-tab" onclick="showStep('step-interact')">
+                        <i class='bx bxs-chevron-down'></i> Interact
+                    </div>
                 </div>
-            </div>
-            <!-- Step 1: Services -->
-            <div id="step-services" class="step-content">
-                <input type="checkbox" id="service-instagram" name="service-instagram" class="rounded-fields">
-                <label for="service-instagram" class="rounded-fields">Instagram</label>
-                <br>
-                <input type="checkbox" id="service-twitter" name="service-twitter" class="rounded-fields">
-                <label for="service-twitter" class="rounded-fields">Twitter</label>
-                <br>
-                <input type="checkbox" id="service-tiktok" name="service-tiktok" class="rounded-fields">
-                <label for="service-tiktok" class="rounded-fields">TikTok</label>
-                <br>
-                <input type="checkbox" id="service-linkedin" name="service-linkedin" class="rounded-fields">
-                <label for="service-linkedin" class="rounded-fields">LinkedIn</label>
-                <br>
-                <input type="checkbox" id="service-facebook" name="service-facebook" class="rounded-fields">
-                <label for="service-facebook" class="rounded-fields">Facebook</label>
-                <br>
-                <input type="checkbox" id="service-pinterest" name="service-pinterest" class="rounded-fields">
-                <label for="service-pinterest" class="rounded-fields">Pinterest</label>
-                <br>
-                <input type="checkbox" id="service-youtube" name="service-youtube" class="rounded-fields">
-                <label for="service-youtube" class="rounded-fields">Youtube</label>
-                <br>
-                <input type="checkbox" id="service-threads" name="service-threads" class="rounded-fields">
-                <label for="service-threads" class="rounded-fields">Threads</label>
-                <br>
-                <!--<button onclick="nextStep('step-interact')">Next</button>-->
-            </div>
-
-            <di id="step-interact" class="step-content" style="display: none;">
-                <!--<label class="rounded-fields" for="interact">Interact</label>-->
-                <select id="interact" name="interact" onchange="toggleInteractFields()" class="rounded-fields">
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-                <br>
-                <br>
-                <!-- Fields for 'No' -->
-                <div class="step-tabs" id="interact-no-tabs">
-                    <div class="step-tab" onclick="showFieldGroup('endpoint-group')">
-                        <i class='bx bxs-chevron-down'></i> Endpoint
+                <!-- Step 1: Services -->
+                <div id="step-services" class="step-content">
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="service-instagram" name="service-instagram" class="service-label">
+                        <label for="service-instagram" class="service-label">Instagram</label>
                     </div>
-                    <div id="interact-fields">
-                        <!-- Endpoint fields -->
-                        <div id="endpoint-group" class="field-group">
-                            <input type="text" id="endpoint" name="endpoint" placeholder="Enter end point"
-                                class="rounded-fields">
-                        </div>
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="service-twitter" name="service-twitter" class="service-label">
+                        <label for="service-twitter" class="service-label">Twitter</label>
                     </div>
-
-                    <div class="step-tab" onclick="showFieldGroup('datapoint-group')">
-                        <i class='bx bxs-chevron-down'></i> Data Point
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="service-tiktok" name="service-tiktok" class="service-label">
+                        <label for="service-tiktok" class="service-label">TikTok</label>
                     </div>
-                    <div id="interact-fields">
-                        <!-- Data Point fields -->
-                        <div id="datapoint-group" class="field-group">
-                            <input type="text" id="datapoint" name="datapoint" placeholder="Enter data point"
-                                class="rounded-fields">
-                        </div>
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="service-linkedin" name="service-linkedin" class="service-label">
+                        <label for="service-linkedin" class="service-label">LinkedIn</label>
                     </div>
-
-                    <div class="step-tab" onclick="showFieldGroup('inputs-group')">
-                        <i class='bx bxs-chevron-down'></i> Input
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="service-facebook" name="service-facebook" class="service-label">
+                        <label for="service-facebook" class="service-label">Facebook</label>
                     </div>
-                    <div id="interact-fields">
-                        <!-- Input fields -->
-                        <div id="inputs-group" class="field-group">
-                            <textarea id="inputs" name="inputs" placeholder="Enter Query"
-                                class="rounded-fields"></textarea>
-                        </div>
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="service-pinterest" name="service-pinterest" class="service-label">
+                        <label for="service-pinterest" class="service-label">Pinterest</label>
                     </div>
-
-                    <!-- <button onclick="nextStep('step-finish')">Finish</button> -->
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="service-youtube" name="service-youtube" class="service-label">
+                        <label for="service-youtube" class="service-label">Youtube</label>
+                    </div>
+                    <div class="service-checkbox">
+                        <input type="checkbox" id="service-threads" name="service-threads" class="service-label">
+                        <label for="service-threads" class="service-label">Threads</label>
+                    </div>
+                    <!--<button onclick="nextStep('step-interact')">Next</button>-->
                 </div>
 
-
-                <!-- Fields for 'Yes' -->
-                <div id="interact-yes-fields" style="display: none;">
-                    <div class="step-tabs" id="interact-yes-tabs">
-                        <div class="step-tab" onclick="showFieldGroup('mode-group')"><i class='bx bxs-chevron-down'></i>
-                            Mode </div>
-                        <div id="interact-fields-yes">
-                            <!-- Mode fields -->
-                            <div id="mode-group" class="field-group">
-                                <select id="mode" name="mode" class="rounded-fields">
-                                    <option value="mobile" class="rounded-fields">Mobile</option>
-                                    <option value="browser" class="rounded-fields">Browser</option>
-                                </select>
-                            </div>
+                <div id="step-interact" class="step-content" style="display: none;">
+                    <!--<label class="rounded-fields" for="interact">Interact</label>-->
+                    <select id="interact" name="interact" onchange="toggleInteractFields()" class="rounded-fields">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                    <!-- Fields for 'No' -->
+                    <div class="step-tabs" id="interact-no-tabs">
+                        <div class="step-tab" onclick="toggleFieldGroup('endpoint-group')">
+                            <i class='bx bxs-chevron-down'></i> Endpoint
                         </div>
-                        <div class="step-tab" onclick="showFieldGroup('bots-group')"><i class='bx bxs-chevron-down'></i>
-                            Bots </div>
-                        <div id="interact-fields-yes">
-                            <!-- "Bots" field group -->
-                            <div id="bots-group" class="field-group">
-                                <input type="text" id="bot-search" placeholder="Search bots" class="rounded-fields">
-                                <br>
-                                <input type="checkbox" id="select-all-bots" name="select-all-bots"
+                        <div id="interact-fields">
+                            <!-- Endpoint fields -->
+                            <div id="endpoint-group" class="field-group" style="display: none;">
+                                <input type="text" id="endpoint" name="endpoint" placeholder="Enter end point"
                                     class="rounded-fields">
-                                <label class="rounded-fields" for="select-all-bots">Select All Bots</label>
-                                <br>
-                                <!-- Add options for displaying various bot options -->
-                                <select id="bot-options" name="bot-options" class="rounded-fields">
-                                    <option value="option1" class="rounded-fields">Option 1</option>
-                                    <option value="option2" class="rounded-fields">Option 2</option>
-                                    <!-- Add more options as needed -->
-                                </select>
                             </div>
                         </div>
 
-                        <div class="step-tab" onclick="showFieldGroup('proxy-group')"><i
-                                class='bx bxs-chevron-down'></i> Proxy </div>
-                        <div id="interact-fields-yes">
-                            <!-- "Proxy" field group -->
-                            <div id="proxy-group" class="field-group">
-                                <input type="text" id="proxy-search" placeholder="Search proxies"
-                                    class="rounded-fields">
-                                <br>
-                                <input type="checkbox" id="select-all-proxies" name="select-all-proxies"
-                                    class="rounded-fields">
-                                <label for="select-all-proxies" class="rounded-fields">Select All Proxies </label>
-                                <!-- Add options for displaying various proxy options -->
-                                <select id="proxy-options" name="proxy-options" class="rounded-fields">
-                                    <option value="option1">Option 1</option>
-                                    <option value="option2">Option 2</option>
-                                    <!-- Add more options as needed -->
-                                </select>
-                            </div>
+                        <div class="step-tab" onclick="toggleFieldGroup('datapoint-group')">
+                            <i class='bx bxs-chevron-down'></i> Data Point
                         </div>
-                        <div class="step-tab" onclick="showFieldGroup('target-group')"><i
-                                class='bx bxs-chevron-down'></i> Target </div>
-                        <div id="interact-fields-yes">
-                            <!-- "Target" field group -->
-                            <div id="target-group" class="field-group">
-                                <br>
-                                <input type="checkbox" id="target-location" name="target-location"
+                        <div id="interact-fields">
+                            <!-- Data Point fields -->
+                            <div id="datapoint-group" class="field-group" style="display: none;">
+                                <input type="text" id="datapoint" name="datapoint" placeholder="Enter data point"
                                     class="rounded-fields">
-                                <label for="target-location" class="rounded-fields">Location</label>
-                                <br>
-                                <input type="checkbox" id="target-followers" name="target-followers"
-                                    class="rounded-fields">
-                                <label for="target-followers" class="rounded-fields">User Followers</label>
-                                <br>
-                                <input type="checkbox" id="target-hashtags" name="target-hashtags"
-                                    class="rounded-fields">
-                                <label for="target-hashtags" class="rounded-fields">Hashtags</label>
-                                <br>
-                                <input type="checkbox" id="target-following" name="target-following"
-                                    class="rounded-fields">
-                                <label for="target-following" class="rounded-fields">Following</label>
-                                <br>
-                                <input type="checkbox" id="target-likes" name="target-likes" class="rounded-fields">
-                                <label for="target-likes" class="rounded-fields">Post Likes</label>
-                                <br>
-                                <input type="checkbox" id="target-audience" name="target-audience"
-                                    class="rounded-fields">
-                                <label for="target-audience" class="rounded-fields">Audience</label>
-                            </div>
-
-                        </div>
-                        <div class="step-tab" onclick="showFieldGroup('messaging-group')"><i
-                                class='bx bxs-chevron-down'></i> Messaging </div>
-                        <div id="interact-fields-yes">
-                            <!-- Updated "Messaging" field group -->
-                            <div id="messaging-group" class="field-group" class="rounded-fields">
-                                <br>
-                                <input type="text" id="message-search" placeholder="Search messages"
-                                    class="rounded-fields">
-                                <br>
-                                <input type="checkbox" id="select-all-messages" name="select-all-messages"
-                                    class="rounded-fields">
-                                <label for="select-all-messages" class="rounded-fields">Select All Messages</label>
-                                <br>
-                                <!-- Add options for displaying various message options -->
-                                <select id="message-options" name="message-options" class="rounded-fields">
-                                    <option value="option1">Option 1</option>
-                                    <option value="option2">Option 2</option>
-                                    <!-- Add more options as needed -->
-                                </select>
                             </div>
                         </div>
 
-                        <div class="step-tab" onclick="showFieldGroup('setting-group')"><i
-                                class='bx bxs-chevron-down'></i> Setting </div>
-                        <div id="interact-fields-yes">
-                            <!-- Setting fields -->
-                            <div id="setting-group" class="field-group">
-                                <!-- Max delay B/W each task -->
-                                <label for="max_delay" class="rounded-fields">Max delay B/W each task</label>
-                                <select id="max_delay" name="max_delay" class="rounded-fields"></select>
-                                <br>
-
-                                <!-- Max interactions in each run -->
-                                <label for="max_interact" class="rounded-fields">Max interact (each run)</label>
-                                <select id="max_interact" name="max_interact" class="rounded-fields"></select>
-                                <br>
-
-                                <!-- Unfollow after -->
-                                <label for="unfollow" class="rounded-fields">Unfollow after</label>
-                                <select id="unfollow" name="unfollow" class="rounded-fields"></select>
-                                <br>
-                                <!-- Button to go to Finish -->
-                                <!--<button onclick="nextStep('step-finish')">Finish</button>-->
-                            </div>
-
+                        <div class="step-tab" onclick="toggleFieldGroup('inputs-group')">
+                            <i class='bx bxs-chevron-down'></i> Input
                         </div>
+                        <div id="interact-fields">
+                            <!-- Input fields -->
+                            <div id="inputs-group" class="field-group" style="display: none;">
+                                <textarea id="inputs" name="inputs" placeholder="Enter Query"
+                                    class="rounded-fields"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- <button onclick="nextStep('step-finish')">Finish</button> -->
                     </div>
 
-            <!-- Step 3: Finish -->
-            <div id="step-finish" class="step-content" style="display: none;">
-                <p>Form completed.</p>
-            </div>
+
+                    <!-- Fields for 'Yes' -->
+                    <ul id="interact-yes-fields" style="display: none;">
+                        <div class="step-tabs" id="interact-yes-tabs">
+                            <div class="step-tab" onclick="toggleFieldGroup('mode-group')"><i
+                                    class='bx bxs-chevron-down'></i>
+                                Mode </div>
+                            <div id="interact-fields-yes">
+                                <!-- Mode fields -->
+                                <div id="mode-group" class="field-group">
+                                    <select id="mode" name="mode" class="rounded-fields">
+                                        <option value="mobile" class="rounded-fields">Mobile</option>
+                                        <option value="browser" class="rounded-fields">Browser</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="step-tab" onclick="toggleFieldGroup('bots-group')"><i
+                                    class='bx bxs-chevron-down'></i>
+                                Bots </div>
+                            <div id="interact-fields-yes">
+                                <!-- "Bots" field group -->
+                                <div id="bots-group" class="field-group">
+                                    <input type="text" id="bot-search" placeholder="Search bots" class="rounded-fields">
+                                    <br>
+                                    <input type="checkbox" id="select-all-bots" name="select-all-bots"
+                                        class="service-label">
+                                    <label class="service-label" for="select-all-bots">Select All Bots</label>
+                                    <br>
+                                    <!-- Add options for displaying various bot options -->
+                                    <select id="bot-options" name="bot-options" class="rounded-fields">
+                                        <option value="option1" class="rounded-fields">Option 1</option>
+                                        <option value="option2" class="rounded-fields">Option 2</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="step-tab" onclick="toggleFieldGroup('proxy-group')"><i
+                                    class='bx bxs-chevron-down'></i> Proxy </div>
+                            <div id="interact-fields-yes">
+                                <!-- "Proxy" field group -->
+                                <div id="proxy-group" class="field-group">
+                                    <input type="text" id="proxy-search" placeholder="Search proxies"
+                                        class="rounded-fields">
+                                    <br>
+                                    <input type="checkbox" id="select-all-proxies" name="select-all-proxies"
+                                        class="service-label">
+                                    <label for="select-all-proxies" class="service-label">Select All Proxies </label>
+                                    <!-- Add options for displaying various proxy options -->
+                                    <select id="proxy-options" name="proxy-options" class="rounded-fields">
+                                        <option value="option1">Option 1</option>
+                                        <option value="option2">Option 2</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="step-tab" onclick="toggleFieldGroup('target-group')"><i
+                                    class='bx bxs-chevron-down'></i> Target </div>
+                            <div id="interact-fields-yes">
+                                <!-- "Target" field group -->
+                                <div id="target-group" class="field-group">
+                                    <div class="target-checkbox">
+                                        <input type="checkbox" id="target-location" name="target-location"
+                                            class="service-label">
+                                        <label for="target-location" class="service-label">Location</label>
+                                    </div>
+                                    <div class="target-checkbox">
+                                        <input type="checkbox" id="target-followers" name="target-followers"
+                                            class="service-label">
+                                        <label for="target-followers" class="service-label">User Followers</label>
+                                    </div>
+                                    <div class="target-checkbox">
+                                        <input type="checkbox" id="target-hashtags" name="target-hashtags"
+                                            class="service-label">
+                                        <label for="target-hashtags" class="service-label">Hashtags</label>
+                                    </div>
+                                    <div class="target-checkbox">
+                                        <input type="checkbox" id="target-following" name="target-following"
+                                            class="service-label">
+                                        <label for="target-following" class="service-label">Following</label>
+                                    </div>
+                                    <div class="target-checkbox">
+                                        <input type="checkbox" id="target-likes" name="target-likes"
+                                            class="service-label">
+                                        <label for="target-likes" class="service-label">Post Likes</label>
+                                    </div>
+                                    <div class="target-checkbox">
+                                        <input type="checkbox" id="target-audience" name="target-audience"
+                                            class="service-label">
+                                        <label for="target-audience" class="service-label">Audience</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="step-tab" onclick="toggleFieldGroup('messaging-group')"><i
+                                    class='bx bxs-chevron-down'></i> Messaging </div>
+                            <div id="interact-fields-yes">
+                                <!-- Updated "Messaging" field group -->
+                                <div id="messaging-group" class="field-group" class="rounded-fields">
+                                    <br>
+                                    <input type="text" id="message-search" placeholder="Search messages"
+                                        class="rounded-fields">
+                                    <br>
+                                    <input type="checkbox" id="select-all-messages" name="select-all-messages"
+                                        class="service-label">
+                                    <label for="select-all-messages" class="service-label">Select All Messages</label>
+                                    <br>
+                                    <!-- Add options for displaying various message options -->
+                                    <select id="message-options" name="message-options" class="rounded-fields">
+                                        <option value="option1">Option 1</option>
+                                        <option value="option2">Option 2</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="step-tab" onclick="toggleFieldGroup('setting-group')"><i
+                                    class='bx bxs-chevron-down'></i> Setting </div>
+                            <div id="interact-fields-yes">
+                                <!-- Setting fields -->
+                                <div id="setting-group" class="field-group">
+                                    <!-- Max delay B/W each task -->
+                                    <label for="max_delay" class="service-label">Max delay B/W each task</label>
+                                    <select id="max_delay" name="max_delay" class="rounded-fields"></select>
+                                    <br>
+
+                                    <!-- Max interactions in each run -->
+                                    <label for="max_interact" class="service-label">Max interact (each run)</label>
+                                    <select id="max_interact" name="max_interact" class="rounded-fields"></select>
+                                    <br>
+
+                                    <!-- Unfollow after -->
+                                    <label for="unfollow" class="service-label">Unfollow after</label>
+                                    <select id="unfollow" name="unfollow" class="rounded-fields"></select>
+                                    <br>
+                                    <!-- Button to go to Finish -->
+                                    <!--<button onclick="nextStep('step-finish')">Finish</button>-->
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Finish -->
+                        <div id="step-finish" class="step-content" style="display: none;">
+                            <p>Form completed.</p>
+                        </div>
+                    </ul>
+                </div>
+            </ul>
         </div>
     </section>
     <!-- RIGHT SIDEBAR -->
@@ -484,10 +518,17 @@
     </section>
 
 
-
     <script src="script.js"></script>
 
     <script>
+        function toggleFieldGroup(fieldGroupId) {
+            var fieldGroup = document.getElementById(fieldGroupId);
+            if (fieldGroup.style.display === 'none' || fieldGroup.style.display === '') {
+                fieldGroup.style.display = 'block';
+            } else {
+                fieldGroup.style.display = 'none';
+            }
+        }
         function toggleInteractFields() {
             var interactValue = document.getElementById("interact").value;
             var interactNoTabs = document.getElementById("interact-no-tabs");
@@ -541,19 +582,16 @@
         var currentStep = "services";
 
         function showStep(stepId) {
-            // Hide all steps
-            var steps = document.querySelectorAll('.step-content');
-            steps.forEach(step => {
-                step.style.display = 'none';
-            });
-
-            // Show the selected step
+            // Get the selected step
             var selectedStep = document.getElementById(stepId);
-            if (selectedStep) {
-                selectedStep.style.display = 'block';
+
+            // Toggle the visibility of the selected step
+            if (selectedStep.style.display === 'block') {
+                selectedStep.style.display = 'none'; // If currently visible, hide it
+            } else {
+                selectedStep.style.display = 'block'; // If currently hidden, show it
             }
         }
-
 
         // Function to create and append links
         function createLinks() {
